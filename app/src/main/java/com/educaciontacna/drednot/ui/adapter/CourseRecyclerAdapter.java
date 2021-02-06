@@ -12,9 +12,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.databinding.ItemDocumentBusquedaBinding;
-import com.educaciontacna.drednot.ui.listeners.CoursesItemClickListener;
+import com.educaciontacna.drednot.ui.listeners.IDocumentListener;
 import com.educaciontacna.drednot.ui.model.CourseCard;
 
 import java.util.List;
@@ -22,20 +21,22 @@ import java.util.List;
 public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAdapter._ViewHolder> {
 
     Context mContext;
-    private List<CourseCard> mData;
-    private CoursesItemClickListener coursesItemClickListener;
 
-    public CourseRecyclerAdapter(Context mContext, List<CourseCard> mData, CoursesItemClickListener listener) {
+
+    private List<CourseCard> mData;
+    private IDocumentListener IDocumentListener;
+
+    public CourseRecyclerAdapter(Context mContext, List<CourseCard> mData, IDocumentListener listener) {
         this.mContext = mContext;
         this.mData = mData;
-        this.coursesItemClickListener = listener;
+        this.IDocumentListener = listener;
     }
 
     @NonNull
     @Override
     public CourseRecyclerAdapter._ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 //        View view = LayoutInflater.from(mContext).inflate(R.layout.item_document_busqueda,viewGroup,false);
-//        return new _ViewHolder(view);
+//        return new MyViewHolder(view);
 
         LayoutInflater layoutInflater= LayoutInflater.from(viewGroup.getContext());
         ItemDocumentBusquedaBinding itemCardBinding = ItemDocumentBusquedaBinding.inflate(layoutInflater,viewGroup,false);
@@ -54,48 +55,14 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
 //        viewHolder.itemCardBinding.stagItemCourse.setText(mData.get(i).getCourseTitle());
 //        viewHolder.itemCardBinding.stagItemQuantityCourse.setText(mData.get(i).getQuantityCourses());
 
-        //1st intent 2 methods
-//        if (i%2==1){
-//            ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) viewHolder.card_item.getLayoutParams();
-//            cardViewMarginParams.setMargins(dpToPx(8), dpToPx(16), 0, 0);
-//            viewHolder.card_item.requestLayout();
-//        }
-//        if (i==1){
-//            ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) viewHolder.card_item.getLayoutParams();
-//            cardViewMarginParams.setMargins(dpToPx(8), dpToPx(32), 0, 0);
-//            viewHolder.card_item.requestLayout();
-//        }
-
-        //2nd intent card only bottom margin in xml  and only top margin in adapter- it works
-        if (i%2==1){
-
-            int dimenTopPixeles = getDimensionValuePixels(R.dimen.staggedmarginbottom);
-            int dimenleftPixeles = getDimensionValuePixels(R.dimen.horizontal_card);
-            ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) viewHolder.itemCardBinding.cardItem.getLayoutParams();
-//            cardViewMarginParams.setMargins(dpToPx(8), dpToPx(20), 0, 0);
-            cardViewMarginParams.setMargins(dimenleftPixeles, dimenTopPixeles, 0, 0);
-            viewHolder.itemCardBinding.cardItem.requestLayout();
-        }
 
 //      viewHolder.card_item.setBackgroundColor(mContext.getResources().getColor(R.color.color1));
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                coursesItemClickListener.onDashboardCourseClick(mData.get(i), viewHolder.itemCardBinding.cardViewImage);
+                IDocumentListener.onDashboardCourseClick(mData.get(i), viewHolder.itemCardBinding.cardViewImage);
             }
         });
-    }
-
-    public int getDimensionValuePixels(int dimension)
-    {
-        return (int) mContext.getResources().getDimension(dimension);
-    }
-
-
-    public int dpToPx(int dp)
-    {
-        float scale = mContext.getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
     }
 
 
@@ -116,7 +83,8 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
 
     @Override
     public int getItemCount() {
-        return mData.size();
+//        return mData.size();
+        return mData == null ? 0 : mData.size();
     }
 
     public static class _ViewHolder extends RecyclerView.ViewHolder{
@@ -125,7 +93,7 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
 //        TextView quantity_courses;
 //        CardView card_item;
 //        public CourseCard mItem;
-//        public _ViewHolder(@NonNull View itemView) {
+//        public MyViewHolder(@NonNull View itemView) {
 //            super(itemView);
 //            card_item = itemView.findViewById(R.id.card_item);
 //            imageView = itemView.findViewById(R.id.card_view_image);

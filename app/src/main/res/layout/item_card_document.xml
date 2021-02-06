@@ -3,7 +3,6 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
@@ -15,7 +14,7 @@
 
 
     <TextView
-        android:id="@+id/tvItemNroficio"
+        android:id="@+id/tvItemNumeroDoc"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
 
@@ -41,7 +40,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemNroficio" />
+        app:layout_constraintTop_toBottomOf="@+id/tvItemNumeroDoc" />
 
     <TextView
         android:id="@+id/tvItemDocumentoEstado"
@@ -53,7 +52,11 @@
         android:layout_marginEnd="8dp"
         android:text="Estado"
         android:textColor="@color/frutorial_title"
-        android:textSize="16sp"
+        android:paddingVertical="@dimen/card_itemcourse_elevation"
+        android:paddingHorizontal="@dimen/card_image_elevation"
+
+        android:background="@color/color2"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -18,16 +18,17 @@
         style="@style/parent.contentLayout"
         android:background="@color/grey"
 
-        android:paddingBottom="@dimen/normalPadding">
+
+        >
 
 
         <LinearLayout
             android:id="@+id/cardTotales"
             android:layout_width="0dp"
-            android:padding="@dimen/d_number_courses"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="vertical"
+            android:padding="@dimen/top_text_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -36,8 +37,8 @@
                 android:id="@+id/tvFecha"
                 style="@style/viewParent.headerText"
                 android:layout_width="wrap_content"
-                android:layout_gravity="end"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
 
                 android:text="15/02/2021" />
 
@@ -46,7 +47,7 @@
                 style="@style/viewParent.headerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nofiticacion: " />
+                android:text="Notificacion: " />
 
             <TextView
                 android:id="@+id/tvPendidente"
@@ -61,6 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total: " />
+
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -79,40 +81,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fab_margin"
                 android:orientation="vertical">
-
-                <TextView
-                    android:paddingStart="@dimen/d_number_courses"
-                    android:paddingEnd="@dimen/d_number_courses"
-                    style="@style/viewParent.headerText"
-                    android:text="DOCUMENTOS" />
-
-
                 <!--remove the below layout with recycler view, use card poplar courses as model for design-->
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvListDocuments"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/activity_vertical_margin"
 
 
-                    >
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="7"
+                            tools:listitem="@layout/item_card_document">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <include layout="@layout/item_card_document" />
-
-                        <include layout="@layout/item_card_document" />
-
-                        <include layout="@layout/item_card_document" />
-
-                        <include layout="@layout/item_card_document" />
-                        <include layout="@layout/item_card_document" />
-                        <include layout="@layout/item_card_document" />
-                    </LinearLayout>
-                </ScrollView>
-
+                        </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

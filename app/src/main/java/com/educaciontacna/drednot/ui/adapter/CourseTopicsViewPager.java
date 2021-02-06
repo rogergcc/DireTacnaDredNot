@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.educaciontacna.drednot.databinding.ItemPagerCardBinding;
 import com.educaciontacna.drednot.ui.listeners.MatchCourseClickListener;
 import com.educaciontacna.drednot.ui.model.MatchCourse;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 
 import java.util.List;
 
@@ -57,7 +57,8 @@ public class CourseTopicsViewPager extends RecyclerView.Adapter<CourseTopicsView
 
     @Override
     public int getItemCount() {
-        return mCoursesList.size();
+//        return mCoursesList.size();
+        return mCoursesList == null ? 0 : mCoursesList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

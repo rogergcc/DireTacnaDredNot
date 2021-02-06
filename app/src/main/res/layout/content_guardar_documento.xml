@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteBodyColor"
+    android:orientation="vertical"
+    android:padding="@dimen/fab_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:padding="@dimen/drawable_left"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@color/colorAccent"
+            android:padding="@dimen/drawable_left"
+            android:text="Pendiente"
+
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:gravity="end"
+            android:textSize="16sp"
+            android:layout_gravity="end"
+            android:id="@+id/switchEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:trackTint="@color/switch_track_selector"
+            app:thumbTint="@color/switch_track_selector"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvDocumento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="DOCUMEN 1"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Nombre"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/card_maincourse_elevation"
+        android:layout_marginEnd="8dp"
+        android:text="Nombre" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="direccion"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/card_maincourse_elevation"
+        android:layout_marginEnd="8dp"
+        android:text="Nombre" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="FECHA"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvfecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/card_maincourse_elevation"
+        android:layout_marginEnd="8dp"
+        android:text="Fecha" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Telefono"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/card_maincourse_elevation"
+        android:layout_marginEnd="8dp"
+        android:text="Telefono" />
+
+
+
+
+
+    <RadioGroup
+        android:id="@+id/rGroupNotificaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:layout_marginTop="4dp"
+        android:padding="10dp">
+
+        <RadioButton
+            android:id="@+id/rbNotificacionActa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:tag="0"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:text="Notificacion con Acta "
+
+            android:textColor="@android:color/black" />
+
+        <!--            android:backgroundTint="@android:color/holo_orange_dark"-->
+        <RadioButton
+            android:id="@+id/rbNotificacionInforme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="1"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:text="Notificacion con Informe "
+            android:textColor="@android:color/black" />
+    </RadioGroup>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="OBSERVACION"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvObervacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/card_maincourse_elevation"
+        android:layout_marginEnd="8dp"
+        android:text="OBSERV"
+
+        />
+</LinearLayout>

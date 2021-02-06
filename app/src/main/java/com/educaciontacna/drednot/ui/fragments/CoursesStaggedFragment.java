@@ -22,14 +22,15 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.databinding.FragmentCoursesStaggedBinding;
 import com.educaciontacna.drednot.ui.adapter.CourseRecyclerAdapter;
-import com.educaciontacna.drednot.ui.listeners.CoursesItemClickListener;
+import com.educaciontacna.drednot.ui.listeners.IDocumentListener;
 import com.educaciontacna.drednot.ui.model.CourseCard;
+import com.educaciontacna.drednot.ui.model.DocumentModel;
 
 import java.util.ArrayList;
 
 
 public class CoursesStaggedFragment extends Fragment
-        implements CoursesItemClickListener {
+        implements IDocumentListener {
 
     FragmentCoursesStaggedBinding binding;
     private Context mcontext;
@@ -105,5 +106,10 @@ public class CoursesStaggedFragment extends Fragment
     @Override
     public void onDashboardCourseClick(CourseCard courseCard, ImageView imageView) {
         Toast.makeText(mcontext, courseCard.getCourseTitle(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void ondHomeDocumentClick(DocumentModel documentModel) {
+
     }
 }
