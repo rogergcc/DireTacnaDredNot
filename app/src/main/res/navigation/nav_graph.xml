@@ -23,6 +23,12 @@
         android:name="com.educaciontacna.drednot.ui.fragments.MatchesCoursesFragment"
         android:label="fragment_matches_courses"
         tools:layout="@layout/fragment_matches_courses" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.educaciontacna.drednot.ui.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
     <activity
         android:id="@+id/mainActivity"
         android:name="com.educaciontacna.drednot.MainActivity"
@@ -53,4 +59,5 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+
 </navigation>

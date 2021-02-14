@@ -27,4 +27,22 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <string name="new_account">Nueva Cuenta</string>
+    <string name="signup_desc">Empieza ingresando tu nombre y correo.</string>
+
+    <string name="login_desc">Ingresa los datos para ingresar a tu cuenta</string>
+    <string name="log_in">Log In</string>
+    <string name="message">Recibira un mensaje SMS para su verificación y se aplican tarifas estándar. Por favor ingrese su número de teléfono</string>
+
+    <string name="reset_pass_message">Parece que olvidó su contraseña. Si esto es cierto, haga clic a continuación para restablecer su contraseña.</string>
+    <string name="reset_my_password">"Restablecer mi contraseña "</string>
+    <string name="continue_login">"Continuar Iniciar sesión? "</string>
+    <string name="your_password">Tu contraseña</string>
+    <string name="forgot_password">"¿Has olvidado tu contraseña? "</string>
+    <string name="messag_continue">Continuar</string>
+    <string name="no_account_yet">¿No tienes cuenta aún?  </string>
+    <string name="create_one">[  Registrarse</string>
+
 </resources>

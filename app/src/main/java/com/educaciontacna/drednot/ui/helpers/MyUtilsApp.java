@@ -6,6 +6,7 @@ package com.educaciontacna.drednot.ui.helpers;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
@@ -65,7 +66,7 @@ public final class MyUtilsApp {
     }
 
     public static void showLogError(String TAG, String message) {
-        Log.e(TAG, "showLog ERROR: " + message);
+        Log.e(TAG,  message);
     }
 
     public static AlertDialog showDialogMessage(Context context, String title, String message) {
@@ -76,18 +77,47 @@ public final class MyUtilsApp {
         return alertDialog;
     }
 
-    public static String getTimeStamp() {
-        return new SimpleDateFormat(MyConstants.TIMESTAMP_FORMAT, Locale.US).format(new Date());
+    public static void showDialogTitleMessage(Context context, String title, String message) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).setTitle(title).setMessage(message).show();
+        if (alertDialog.isShowing()) {
+            alertDialog.cancel();
+        }
+        alertDialog.show();
     }
 
-    public String getScanTime() {
-        DateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
-        return timeFormat.format(new Date());
+    public static void ShowDialog(Context context, String title, String message) {
+        androidx.appcompat.app.AlertDialog.Builder alertDialog = new androidx.appcompat.app.AlertDialog.Builder(context);
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
+        alertDialog.setIcon(R.drawable.location_on_24);
+        alertDialog
+//                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                })
+                .setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        alertDialog.show();
+    }
+
+    public static String getTimeStamp() {
+        return new SimpleDateFormat(MyConstants.TIMESTAMP_FORMAT, Locale.US).format(new Date());
     }
 
     public static String formateToThreeDecimal(double value) {
         DecimalFormat df = new DecimalFormat("#.000");
         return df.format(value);
+    }
+
+    public String getScanTime() {
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+        return timeFormat.format(new Date());
     }
 
     private void showSnack(View view, boolean isConnected) {
@@ -109,7 +139,6 @@ public final class MyUtilsApp {
         textView.setTextColor(color);
         snackbar.show();
     }
-
 
 
 }

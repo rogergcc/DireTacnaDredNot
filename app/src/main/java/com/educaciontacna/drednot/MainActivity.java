@@ -1,22 +1,19 @@
 package com.educaciontacna.drednot;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.educaciontacna.drednot.databinding.ActivityMainBinding;
-import com.educaciontacna.drednot.ui.helpers.BottomNavigationBehavior;
 import com.educaciontacna.drednot.ui.helpers.DarkModePrefManager;
+import com.educaciontacna.drednot.ui.helpers.MyUtilsApp;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -48,7 +45,6 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
 
-
         //region REGION OLD METHOD BOTTOM NAVIGATION
 //        binding.appBarMain.bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 //        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) binding.appBarMain.bottomNavigationView.getLayoutParams();
@@ -58,6 +54,7 @@ public class MainActivity extends AppCompatActivity
 
         setupNavigation();
 
+        MyUtilsApp.ShowDialog(MainActivity.this,"Bienvenido a DredNot","Active su ubicacion para continuar");
     }
 
     private void setupNavigation() {

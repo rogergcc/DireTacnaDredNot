@@ -54,6 +54,8 @@ public class HomeCoursesFragment extends Fragment implements IDocumentListener {
         mcontext = this.getContext();
         View view = binding.getRoot();
 
+
+
         binding.rvListDocuments.setLayoutManager(
                 new LinearLayoutManager(mcontext, RecyclerView.VERTICAL,false)
         );
@@ -74,7 +76,7 @@ public class HomeCoursesFragment extends Fragment implements IDocumentListener {
 //        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.card_margin);
 //        binding.rvListDocuments.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
 
-
+//        MyUtilsApp.showDialogTitleMessage(mcontext,"Bienvenido a DredNot","Active su ubicacion para continuar");
         binding.rvListDocuments.setAdapter(adapter);
         return view;
 

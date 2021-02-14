@@ -2,7 +2,6 @@
 <menu
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
 
     >
 
@@ -23,6 +22,10 @@
 
         android:title="Buscar" />
 
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_user_icon"
+        android:title="Usuario" />
 
     <item
         android:id="@+id/matchesCoursesFragment"
@@ -30,9 +33,6 @@
         android:visible="false"
         android:title="Search" />
 
-    <item
-        android:id="@+id/navigationMyProfile"
-        android:icon="@drawable/ic_user_icon"
-        android:title="User" />
+
 
 </menu>

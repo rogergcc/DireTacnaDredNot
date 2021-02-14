@@ -8,19 +8,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.HomeCoursesFragment"
-
-
     >
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
 
         style="@style/parent.contentLayout"
         android:background="@color/grey"
-
-
         >
-
 
         <LinearLayout
             android:id="@+id/cardTotales"

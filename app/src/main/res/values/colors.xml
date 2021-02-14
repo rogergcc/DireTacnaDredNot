@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FCFCFC</color>
+    <color name="colorPrimary">@color/darkgrey</color>
     <color name="colorPrimaryDark">#2A2E43</color>
     <color name="colorAccent">#FF402D</color>
     <color name="bottomNavigationTextColor">#B2B2B2</color>
@@ -52,4 +52,10 @@
 
     <color name="colorPrimaryText">@android:color/white</color>
 
+
+
+    <color name="bg_color">#f3f5f9</color>
+    <color name="darkgrey">#424242</color>
+    <color name="gradientViolet">#8A52E9</color>
+    <color name="gradientLightBlue">#376DF6</color>
 </resources>

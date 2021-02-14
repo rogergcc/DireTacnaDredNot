@@ -4,11 +4,13 @@
 
 package com.educaciontacna.drednot;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.educaciontacna.drednot.ui.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -25,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //Write whatever to want to do after delay specified (1 sec)
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
         }, 1500);

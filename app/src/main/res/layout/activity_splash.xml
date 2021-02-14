@@ -8,7 +8,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/whiteBodyColor"
+
     tools:context=".SplashActivity">
 
     <LinearLayout
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +34,9 @@
 
             android:contentDescription="@string/app_name"
 
-
-            android:src="@drawable/refer_icon" />
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:src="@drawable/logo_dretnot" />
 
         <TextView
             android:id="@+id/tv_logo_message"
@@ -47,8 +50,8 @@
             android:fontFamily="@font/bariol_bold"
             android:gravity="center"
             android:text="@string/msg_diretacna"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp">
+            android:textColor="@color/red"
+            android:textSize="17sp">
 
         </TextView>
     </LinearLayout>
