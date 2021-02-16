@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "400757249203",
+    "project_id": "diretacna",
+    "storage_bucket": "diretacna.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400757249203:android:f4d57d0934e6c4cd8b0cc6",
+        "android_client_info": {
+          "package_name": "com.educaciontacna.drednot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400757249203-3k4vf7fvj9jarsi9p11g33g6aok2kl5a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.educaciontacna.drednot",
+            "certificate_hash": "00bd725dba73228aad67925c37a4bd4dcabce126"
+          }
+        },
+        {
+          "client_id": "400757249203-v57k13176op9vemkjofqcfdn4p74sbn1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtg4O__3hZKXepNTrZmchGkM8JOXLEFBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400757249203-v57k13176op9vemkjofqcfdn4p74sbn1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
