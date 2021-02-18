@@ -11,12 +11,29 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
+        debug {
+            versionNameSuffix "-DEBUG"
+            applicationIdSuffix ".debug"
+            debuggable true
+//            buildConfigField "String", "POST_URL", postsUrl
+//            resValue("string", "google_maps_key", localProperties['apiKey'])
+            // use in app R.string.google_maps_key
+            //getResources().getString(R.string.google_maps_key);
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+            debuggable false
+//            shrinkResources true
+
+//            buildConfigField "String", "POST_URL", postsUrl
+//            resValue("string", "google_maps_key", localProperties['apiKey'])
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
