@@ -20,6 +20,7 @@ public class MyConstants {
     public static final String SEED_DATABASE_QUESTIONS = "seed/questions.json";
 
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
+    public static final String TIMESTAMP_FORMAT_DATE = "dd/MM/yyyy";
     public static final String APP_VERSION_NAME = BuildConfig.VERSION_NAME;
     public static final String PREFERENCE_CODE_SESSION = "user_session";
 

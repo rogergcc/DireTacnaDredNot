@@ -2,7 +2,7 @@
  * Copyright (c) 2020. rogergcc
  */
 
-package com.educaciontacna.drednot.ui.adapter;
+package com.educaciontacna.drednot.ui.seccionbusquedas;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ import com.educaciontacna.drednot.ui.model.CourseCard;
 
 import java.util.List;
 
-public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAdapter._ViewHolder> {
+public class BusquedaDocumentosAdapter extends RecyclerView.Adapter<BusquedaDocumentosAdapter._ViewHolder> {
 
     Context mContext;
 
@@ -26,7 +26,7 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
     private List<CourseCard> mData;
     private IDocumentListener IDocumentListener;
 
-    public CourseRecyclerAdapter(Context mContext, List<CourseCard> mData, IDocumentListener listener) {
+    public BusquedaDocumentosAdapter(Context mContext, List<CourseCard> mData, IDocumentListener listener) {
         this.mContext = mContext;
         this.mData = mData;
         this.IDocumentListener = listener;
@@ -34,7 +34,7 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
 
     @NonNull
     @Override
-    public CourseRecyclerAdapter._ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public BusquedaDocumentosAdapter._ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 //        View view = LayoutInflater.from(mContext).inflate(R.layout.item_document_busqueda,viewGroup,false);
 //        return new MyViewHolder(view);
 
@@ -44,7 +44,7 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CourseRecyclerAdapter._ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final BusquedaDocumentosAdapter._ViewHolder viewHolder, final int i) {
 //        viewHolder.mItem = mData.get(i);
         final int pos = viewHolder.getAdapterPosition();
         //Set ViewTag

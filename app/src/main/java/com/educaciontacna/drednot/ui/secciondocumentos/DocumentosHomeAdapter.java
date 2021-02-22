@@ -2,7 +2,7 @@
  * Copyright (c) 2020. rogergcc
  */
 
-package com.educaciontacna.drednot.ui.adapter;
+package com.educaciontacna.drednot.ui.secciondocumentos;
 
 import android.content.Context;
 import android.view.LayoutInflater;

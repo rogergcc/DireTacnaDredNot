@@ -5,14 +5,12 @@ import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.educaciontacna.drednot.databinding.ActivityMainBinding;
-import com.educaciontacna.drednot.ui.helpers.DarkModePrefManager;
-import com.educaciontacna.drednot.ui.helpers.MyUtilsApp;
+import com.educaciontacna.drednot.ui.utils.MyUtilsApp;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity
@@ -27,9 +25,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (new DarkModePrefManager(this).isNightMode()) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
@@ -45,12 +40,6 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
 
-        //region REGION OLD METHOD BOTTOM NAVIGATION
-//        binding.appBarMain.bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) binding.appBarMain.bottomNavigationView.getLayoutParams();
-//        layoutParams.setBehavior(new BottomNavigationBehavior());
-//        binding.appBarMain.bottomNavigationView.setSelectedItemId(R.id.navigationHome);
-        //endregion
 
         setupNavigation();
 

@@ -123,7 +123,7 @@
                 android:background="@drawable/circularbluebordersolid"
                 android:fontFamily="@font/proximanovaregular"
                 android:padding="16dp"
-                android:text="@string/messag_continue"
+                android:text="@string/message_ingresar"
                 android:textColor="@color/white" />
 
             <LinearLayout

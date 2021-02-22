@@ -1,4 +1,4 @@
-package com.educaciontacna.drednot.ui.documentodetalle;
+package com.educaciontacna.drednot.ui.secciondocumentos;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,11 +14,11 @@ import androidx.core.content.ContextCompat;
 
 import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.databinding.ActivityGuardarDocumentoBinding;
-import com.educaciontacna.drednot.ui.helpers.MyUtilsApp;
 import com.educaciontacna.drednot.ui.model.DocumentModel;
 import com.educaciontacna.drednot.ui.utils.MyConstants;
+import com.educaciontacna.drednot.ui.utils.MyUtilsApp;
 
-public class GuardarDocumentoActivity extends AppCompatActivity {
+public class DetalleDocumentoActivity extends AppCompatActivity {
 
     ActivityGuardarDocumentoBinding binding;
     Context mcontext;
@@ -114,7 +114,7 @@ public class GuardarDocumentoActivity extends AppCompatActivity {
 
                 );
 
-                Toast.makeText(GuardarDocumentoActivity.this, output, Toast.LENGTH_LONG).show();
+                Toast.makeText(DetalleDocumentoActivity.this, output, Toast.LENGTH_LONG).show();
 
                 //Snackbar.make(view, "GUARDAR", Snackbar.LENGTH_LONG).setAction("ok" + output, null).show();
             }

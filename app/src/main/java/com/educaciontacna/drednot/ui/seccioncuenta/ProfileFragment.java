@@ -1,7 +1,8 @@
-package com.educaciontacna.drednot.ui.fragments;
+package com.educaciontacna.drednot.ui.seccioncuenta;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,9 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.educaciontacna.drednot.databinding.FragmentProfileBinding;
+import com.educaciontacna.drednot.ui.LoginActivity;
 import com.educaciontacna.drednot.ui.helpers.FirebaseManager;
-import com.educaciontacna.drednot.ui.helpers.MyUtilsApp;
 import com.educaciontacna.drednot.ui.utils.MyConstants;
+import com.educaciontacna.drednot.ui.utils.MyUtilsApp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +25,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Date;
+
+import static android.content.Context.MODE_PRIVATE;
 import static com.educaciontacna.drednot.ui.utils.MyConstants.PREFERENCE_CODE_SESSION;
 import static com.educaciontacna.drednot.ui.utils.MyConstants.USER_STATUS_DISCONNECTED;
 
@@ -36,6 +41,8 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth mAuth;
     private final FirebaseFirestore firebaseFirestoreDB = new FirebaseManager().db;
     private ProgressDialog progressDialog;
+
+    private SharedPreferences.Editor editor;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -93,7 +100,11 @@ public class ProfileFragment extends Fragment {
                 mAuth.signOut();
                 editor.putInt("isLogged",USER_STATUS_DISCONNECTED);
                 editor.apply();
+                getActivity().finish();
 
+                Intent intent = new Intent(mcontext, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                mcontext.startActivity(intent);
 
             }
         });
@@ -115,6 +126,15 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+    private void signOut(String auth_method) {
+        SharedPreferences sharedPreferences = mcontext.getSharedPreferences(PREFERENCE_CODE_SESSION, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+            editor.putInt("isLogged",USER_STATUS_DISCONNECTED);
+            editor.apply();
+
+    }
+
     public void getUserData(String documentCode){
         DocumentReference docRef = firebaseFirestoreDB
                 .collection(MyConstants.USER_COLLECTION_FIRE)
@@ -131,11 +151,14 @@ public class ProfileFragment extends Fragment {
                 } else {
                     DocumentSnapshot document = task.getResult();
                     if (!document.exists()) {
+                        Date creationDate = document.getDate("date");
+                        MyUtilsApp.showLogError("ProfileFragment","fecha: "+creationDate);
+
 //                        Log.d(TAG, "No such document");
                         MyUtilsApp.showLogError("ProfileFragment","no existe registro");
                     } else {
 //                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                       MyUtilsApp.showToast(mcontext,document.getData().toString());
+                       //MyUtilsApp.showToast(mcontext,document.getData().toString());
 
                        binding.inputName.setText(document.get("name").toString());
                        binding.inputEmail.setText(document.get("username").toString());

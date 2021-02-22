@@ -2,7 +2,7 @@
  * Copyright (c) 2020. rogergcc
  */
 
-package com.educaciontacna.drednot.ui.fragments;
+package com.educaciontacna.drednot.ui.seccionbusquedas;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.databinding.FragmentCoursesStaggedBinding;
-import com.educaciontacna.drednot.ui.adapter.CourseRecyclerAdapter;
 import com.educaciontacna.drednot.ui.listeners.IDocumentListener;
 import com.educaciontacna.drednot.ui.model.CourseCard;
 import com.educaciontacna.drednot.ui.model.DocumentModel;
@@ -29,15 +28,15 @@ import com.educaciontacna.drednot.ui.model.DocumentModel;
 import java.util.ArrayList;
 
 
-public class CoursesStaggedFragment extends Fragment
+public class BusquedasDocumentosFragment extends Fragment
         implements IDocumentListener {
 
     FragmentCoursesStaggedBinding binding;
     private Context mcontext;
     private ArrayList<CourseCard> courseCards;
-    private CourseRecyclerAdapter adapter;
+    private BusquedaDocumentosAdapter adapter;
 
-    public CoursesStaggedFragment() {
+    public BusquedasDocumentosFragment() {
         // Required empty public constructor
     }
     @Override
@@ -89,7 +88,7 @@ public class CoursesStaggedFragment extends Fragment
         courseCards.add(new CourseCard(5, R.drawable.course_design_whatisthisshit, "Documento 554g", "1 May 2021"));
         courseCards.add(new CourseCard(6, R.drawable.course_design_coding, "Documento 442ds", "1 Jul 2021"));
 
-        adapter = new CourseRecyclerAdapter(mcontext, courseCards, this);
+        adapter = new BusquedaDocumentosAdapter(mcontext, courseCards, this);
 
 //        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.card_margin);
 //        binding.rvCourses.addItemDecoration(new SpacesItemDecoration(spacingInPixels));

@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.educaciontacna.drednot.MainActivity;
 import com.educaciontacna.drednot.R;
-import com.educaciontacna.drednot.ui.helpers.MyUtilsApp;
+import com.educaciontacna.drednot.ui.utils.MyUtilsApp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         /*black icons on top bar like battery etc*/
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-        categoriest = getIntent().getStringExtra("categorie");
+        //categoriest = getIntent().getStringExtra("categorie");
         // ButterKnife.inject(this);
 
         // Initialize Firebase Auth
@@ -136,6 +136,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         MyUtilsApp.showLogError(TAG,"error: "+e.getMessage().toString());
+                        progressDialog.dismiss();
                     }
                 })
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -231,6 +232,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
 

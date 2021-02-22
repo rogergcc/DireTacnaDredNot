@@ -10,22 +10,18 @@
 
     <fragment
         android:id="@+id/homeCoursesFragment"
-        android:name="com.educaciontacna.drednot.ui.fragments.HomeCoursesFragment"
+        android:name="com.educaciontacna.drednot.ui.secciondocumentos.HomeDocumentsFragment"
         android:label="fragment_home_courses"
-        tools:layout="@layout/fragment_home_courses" />
+        tools:layout="@layout/fragment_home_documents" />
     <fragment
         android:id="@+id/coursesStaggedFragment"
-        android:name="com.educaciontacna.drednot.ui.fragments.CoursesStaggedFragment"
+        android:name="com.educaciontacna.drednot.ui.seccionbusquedas.BusquedasDocumentosFragment"
         android:label="fragment_courses_stagged"
         tools:layout="@layout/fragment_courses_stagged" />
-    <fragment
-        android:id="@+id/matchesCoursesFragment"
-        android:name="com.educaciontacna.drednot.ui.fragments.MatchesCoursesFragment"
-        android:label="fragment_matches_courses"
-        tools:layout="@layout/fragment_matches_courses" />
+
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.educaciontacna.drednot.ui.fragments.ProfileFragment"
+        android:name="com.educaciontacna.drednot.ui.seccioncuenta.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 
@@ -39,25 +35,7 @@
         android:name="com.educaciontacna.drednot.SplashActivity"
         android:label="activity_splash"
         tools:layout="@layout/activity_splash" />
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.educaciontacna.drednot.ui.documentodetalle.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.educaciontacna.drednot.ui.documentodetalle.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
 
 </navigation>

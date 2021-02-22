@@ -7,6 +7,10 @@ package com.educaciontacna.drednot.ui.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.util.Date;
+
 public class DocumentModel implements Parcelable {
 
     public static final Creator<DocumentModel> CREATOR = new Creator<DocumentModel>() {
@@ -22,10 +26,16 @@ public class DocumentModel implements Parcelable {
     };
     private int Id;
     private int documentoEstado;
+    private String estado;
     private String documentName;
     private String encargadoDocumento;
     private String documentoFecha;
     private int radioTipoNotificado;
+
+    @ServerTimestamp
+    private
+    Date timestamp;
+
 
     public String getDocumentoEstadoTexto() {
         return documentoEstadoTexto;
@@ -36,6 +46,8 @@ public class DocumentModel implements Parcelable {
     }
 
     private String documentoEstadoTexto;
+
+
 
     public DocumentModel(int id, int documentoEstado, String documentName, String encargadoDocumento, String documentoFecha) {
         Id = id;
@@ -133,5 +145,21 @@ public class DocumentModel implements Parcelable {
         parcel.writeString(documentName);
         parcel.writeString(encargadoDocumento);
         parcel.writeString(documentoFecha);
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    private Date getTimestamp() {
+        return timestamp;
+    }
+
+    private void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }

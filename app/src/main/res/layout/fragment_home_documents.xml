@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.HomeCoursesFragment"
+    tools:context=".ui.secciondocumentos.HomeDocumentsFragment"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tvFecha"
+                android:id="@+id/tvFechaHoy"
                 style="@style/viewParent.headerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

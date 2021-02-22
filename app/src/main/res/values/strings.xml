@@ -44,5 +44,6 @@
     <string name="messag_continue">Continuar</string>
     <string name="no_account_yet">¿No tienes cuenta aún?  </string>
     <string name="create_one">[  Registrarse</string>
+    <string name="message_ingresar">Ingresar</string>
 
 </resources>

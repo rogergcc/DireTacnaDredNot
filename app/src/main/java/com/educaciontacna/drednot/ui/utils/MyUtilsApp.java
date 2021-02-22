@@ -2,7 +2,7 @@
  * Copyright (c) 2020. rogergcc
  */
 
-package com.educaciontacna.drednot.ui.helpers;
+package com.educaciontacna.drednot.ui.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,11 +16,11 @@ import android.widget.Toast;
 import androidx.core.content.ContextCompat;
 
 import com.educaciontacna.drednot.R;
-import com.educaciontacna.drednot.ui.utils.MyConstants;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -114,10 +114,25 @@ public final class MyUtilsApp {
         DecimalFormat df = new DecimalFormat("#.000");
         return df.format(value);
     }
-
     public String getScanTime() {
         DateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
         return timeFormat.format(new Date());
+    }
+
+    public static String getDateDMY() {
+        DateFormat timeFormat = new SimpleDateFormat(MyConstants.TIMESTAMP_FORMAT_DATE, Locale.getDefault());
+        return timeFormat.format(new Date());
+    }
+    public static Date getDateFromString(String datetoSaved){
+         final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+
+        try {
+            Date date = format.parse(datetoSaved);
+            return date ;
+        } catch (ParseException e){
+            return null ;
+        }
+
     }
 
     private void showSnack(View view, boolean isConnected) {

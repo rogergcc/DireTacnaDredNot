@@ -23,7 +23,7 @@
         <activity android:name=".ui.SignUpActivity"></activity>
         <activity android:name=".ui.LoginActivity" />
         <activity
-            android:name=".ui.documentodetalle.GuardarDocumentoActivity"
+            android:name=".ui.secciondocumentos.DetalleDocumentoActivity"
             android:label="@string/title_activity_guardar_documento"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

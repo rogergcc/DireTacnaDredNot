@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+import groovy.json.JsonSlurper
 
 android {
     compileSdkVersion 30
@@ -12,10 +13,26 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            def credsFilePath = file("../credentials.json").toString()
+            def credsFile = new File(credsFilePath, "").getText('UTF-8')
+            def json = new JsonSlurper().parseText(credsFile)
+            storeFile file(json.gms.storeFile)
+            storePassword = json.gms.storePassword
+            keyAlias = json.gms.keyAlias
+            keyPassword = json.gms.keyPassword
+//            v1SigningEnabled true
+//            v2SigningEnabled true
+        }
+    }
+
+
     buildTypes {
         debug {
-            versionNameSuffix "-DEBUG"
-            applicationIdSuffix ".debug"
+//            testCoverageEnabled true
+//            versionNameSuffix "-DEBUG"
+//            applicationIdSuffix ".debug"
             debuggable true
 //            buildConfigField "String", "POST_URL", postsUrl
 //            resValue("string", "google_maps_key", localProperties['apiKey'])
@@ -23,9 +40,9 @@ android {
             //getResources().getString(R.string.google_maps_key);
         }
         release {
-//            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
             debuggable false
-//            shrinkResources true
+            shrinkResources true
 
 //            buildConfigField "String", "POST_URL", postsUrl
 //            resValue("string", "google_maps_key", localProperties['apiKey'])
@@ -34,10 +51,7 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+
     buildFeatures {
 //        dataBinding true
         viewBinding true
