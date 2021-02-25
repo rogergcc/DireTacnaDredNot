@@ -1,4 +1,4 @@
-package com.educaciontacna.drednot.ui;
+package com.educaciontacna.drednot.ui.login;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -18,7 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.educaciontacna.drednot.MainActivity;
+import com.educaciontacna.drednot.ui.main.MainActivity;
 import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.ui.helpers.FirebaseManager;
 import com.educaciontacna.drednot.ui.utils.MyConstants;

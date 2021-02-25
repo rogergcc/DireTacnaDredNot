@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.educaciontacna.drednot.ui.LoginActivity;
+import com.educaciontacna.drednot.ui.login.LoginActivity;
 import com.educaciontacna.drednot.ui.utils.MyConstants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

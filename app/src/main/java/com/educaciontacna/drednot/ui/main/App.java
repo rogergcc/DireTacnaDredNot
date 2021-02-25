@@ -1,4 +1,4 @@
-package com.educaciontacna.drednot;
+package com.educaciontacna.drednot.ui.main;
 
 import android.app.Application;
 

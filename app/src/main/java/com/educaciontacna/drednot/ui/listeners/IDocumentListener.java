@@ -6,8 +6,8 @@ package com.educaciontacna.drednot.ui.listeners;
 
 import android.widget.ImageView;
 
-import com.educaciontacna.drednot.ui.model.CourseCard;
-import com.educaciontacna.drednot.ui.model.DocumentModel;
+import com.educaciontacna.drednot.data.model.CourseCard;
+import com.educaciontacna.drednot.data.model.DocumentModel;
 
 public interface IDocumentListener {
 

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.databinding.ItemCardDocumentBinding;
 import com.educaciontacna.drednot.ui.listeners.IDocumentListener;
-import com.educaciontacna.drednot.ui.model.DocumentModel;
+import com.educaciontacna.drednot.data.model.DocumentModel;
 import com.educaciontacna.drednot.ui.utils.MyConstants;
 
 import java.util.List;
@@ -28,10 +28,21 @@ public class DocumentosHomeAdapter extends RecyclerView.Adapter<DocumentosHomeAd
     private List<DocumentModel> mData;
     private IDocumentListener IDocumentListener;
 
-    public DocumentosHomeAdapter(Context mContext, List<DocumentModel> mData, IDocumentListener listener) {
+//    public DocumentosHomeAdapter(Context mContext, List<DocumentModel> mData, IDocumentListener listener) {
+//        this.mContext = mContext;
+//        this.mData = mData;
+//        this.IDocumentListener = listener;
+//    }
+
+    public DocumentosHomeAdapter(Context mContext,  IDocumentListener listener) {
         this.mContext = mContext;
-        this.mData = mData;
+
         this.IDocumentListener = listener;
+    }
+
+
+    public void setDocumentsData(List<DocumentModel> documentModelList) {
+        this.mData = documentModelList;
     }
 
     @NonNull
@@ -52,7 +63,7 @@ public class DocumentosHomeAdapter extends RecyclerView.Adapter<DocumentosHomeAd
         //Set ViewTag
         viewHolder.itemView.setTag(pos);
 
-        viewHolder.setPostImage(mData.get(i));
+        viewHolder.bindDocument(mData.get(i));
 
 //        viewHolder.itemCardBinding.stagItemCourse.setText(mData.get(i).getCourseTitle());
 //        viewHolder.itemCardBinding.stagItemQuantityCourse.setText(mData.get(i).getQuantityCourses());
@@ -101,26 +112,21 @@ public class DocumentosHomeAdapter extends RecyclerView.Adapter<DocumentosHomeAd
             //this.itemRecyclerMealBinding.
         }
 
-        void setPostImage(DocumentModel documentModel) {
-            String estado = "ESTADO";
-            switch (documentModel.getDocumentoEstado()) {
-                case MyConstants.TIPO_ESTADO_PENDIENTE:
-                    estado = "Pendiente";
+        void bindDocument(DocumentModel documentModel) {
+            switch (documentModel.getEstado()) {
+                case MyConstants.ESTADO_PENDIENTE:
                     this.itemCardBinding.tvItemDocumentoEstado.setBackgroundColor( ContextCompat.getColor(itemView.getContext(), R.color.color4));
                     break;
-                case MyConstants.TIPO_ESTADO_NOTIFICADO:
+                case MyConstants.ESTADO_NOTIFICADO:
                     this.itemCardBinding.tvItemDocumentoEstado.setBackgroundColor( ContextCompat.getColor(itemView.getContext(), R.color.color2));
-                    estado = "Notificado";
                     break;
                 default:
-
+                    this.itemCardBinding.tvItemDocumentoEstado.setBackgroundColor( ContextCompat.getColor(itemView.getContext(), R.color.primaryTextColor));
                     break;
-
             }
-
             this.itemCardBinding.tvItemNumeroDoc.setText(documentModel.getDocumentName());
             this.itemCardBinding.tvItemAsignado.setText(documentModel.getEncargadoDocumento());
-            this.itemCardBinding.tvItemDocumentoEstado.setText(estado+"");
+            this.itemCardBinding.tvItemDocumentoEstado.setText(documentModel.getEstado());
         }
 
     }

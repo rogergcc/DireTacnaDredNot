@@ -2,7 +2,7 @@
  * Copyright (c) 2020. rogergcc
  */
 
-package com.educaciontacna.drednot.ui.model;
+package com.educaciontacna.drednot.data.model;
 
 public class CourseCard {
 

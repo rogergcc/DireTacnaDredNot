@@ -4,7 +4,7 @@ package com.educaciontacna.drednot.ui.helpers;
  * Created by rogergcc on 22/02/2021.
  * Copyright Ⓒ 2021 . All rights reserved.
  */
-public enum EstadoDocumento {
+public enum EstadoDocumentoEnum {
     PENDIENTE("Pendiente"),
     NOTIFICADO("Notificado"),
     INACTIVO("inactivo"),
@@ -18,7 +18,7 @@ public enum EstadoDocumento {
     // ---------------------------------------------------------------------------------------------
     // region Initialization
 
-    EstadoDocumento(String value) {
+    EstadoDocumentoEnum(String value) {
         this.value = value;
     }
 
@@ -44,17 +44,17 @@ public enum EstadoDocumento {
 
     /**
      * getEnumFor(String value)
-     * - Use this custom method instead of build in 'EstadoDocumento.valueOf()' b/c it works for custom enum values.
+     * - Use this custom method instead of build in 'EstadoDocumentoEnum.valueOf()' b/c it works for custom enum values.
      * @param value - String that corresponds to enum value.
-     * @return - EstadoDocumento
+     * @return - EstadoDocumentoEnum
      */
-    public static EstadoDocumento getEnumFor(String value) {
-        for(EstadoDocumento customEnum : EstadoDocumento.values()) {
+    public static EstadoDocumentoEnum getEnumFor(String value) {
+        for(EstadoDocumentoEnum customEnum : EstadoDocumentoEnum.values()) {
             if (customEnum.getValue().equalsIgnoreCase(value)) {
                 return customEnum;
             }
         }
-        return EstadoDocumento.UNKNOWN;
+        return EstadoDocumentoEnum.UNKNOWN;
     }
 
     // endregion

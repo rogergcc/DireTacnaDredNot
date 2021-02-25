@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.educaciontacna.drednot.databinding.FragmentProfileBinding;
-import com.educaciontacna.drednot.ui.LoginActivity;
+import com.educaciontacna.drednot.ui.login.LoginActivity;
 import com.educaciontacna.drednot.ui.helpers.FirebaseManager;
 import com.educaciontacna.drednot.ui.utils.MyConstants;
 import com.educaciontacna.drednot.ui.utils.MyUtilsApp;

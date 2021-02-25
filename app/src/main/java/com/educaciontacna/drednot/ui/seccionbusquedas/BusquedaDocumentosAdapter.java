@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.educaciontacna.drednot.databinding.ItemDocumentBusquedaBinding;
 import com.educaciontacna.drednot.ui.listeners.IDocumentListener;
-import com.educaciontacna.drednot.ui.model.CourseCard;
+import com.educaciontacna.drednot.data.model.CourseCard;
 
 import java.util.List;
 

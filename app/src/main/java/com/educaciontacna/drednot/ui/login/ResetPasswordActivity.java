@@ -1,4 +1,4 @@
-package com.educaciontacna.drednot.ui;
+package com.educaciontacna.drednot.ui.login;
 
 import android.os.Bundle;
 

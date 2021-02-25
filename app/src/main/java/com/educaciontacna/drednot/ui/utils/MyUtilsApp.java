@@ -119,7 +119,7 @@ public final class MyUtilsApp {
         return timeFormat.format(new Date());
     }
 
-    public static String getDateDMY() {
+    public static String getTodayDateDMY() {
         DateFormat timeFormat = new SimpleDateFormat(MyConstants.TIMESTAMP_FORMAT_DATE, Locale.getDefault());
         return timeFormat.format(new Date());
     }

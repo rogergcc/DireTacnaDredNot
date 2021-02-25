@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat;
 
 import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.databinding.ActivityGuardarDocumentoBinding;
-import com.educaciontacna.drednot.ui.model.DocumentModel;
+import com.educaciontacna.drednot.data.model.DocumentModel;
 import com.educaciontacna.drednot.ui.utils.MyConstants;
 import com.educaciontacna.drednot.ui.utils.MyUtilsApp;
 

@@ -22,8 +22,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.databinding.FragmentCoursesStaggedBinding;
 import com.educaciontacna.drednot.ui.listeners.IDocumentListener;
-import com.educaciontacna.drednot.ui.model.CourseCard;
-import com.educaciontacna.drednot.ui.model.DocumentModel;
+import com.educaciontacna.drednot.data.model.CourseCard;
+import com.educaciontacna.drednot.data.model.DocumentModel;
 
 import java.util.ArrayList;
 
@@ -56,20 +56,29 @@ public class BusquedasDocumentosFragment extends Fragment
         View view = binding.getRoot();
 
 
-        binding.edtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//        binding.edtDocAdministrativo.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+//
+//                    //For this example only use seach option
+//                    //U can use a other view with activityresult
+//                    performSearch();
+//                    Toast.makeText(mcontext,
+//                            "Edt Searching Click: " +  binding.edtDocAdministrativo.getText().toString().trim(),
+//                            Toast.LENGTH_SHORT).show();
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+        binding.btnBuscarDoc.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-
-                    //For this example only use seach option
-                    //U can use a other view with activityresult
-                    performSearch();
-                    Toast.makeText(mcontext,
-                            "Edt Searching Click: " +  binding.edtSearch.getText().toString().trim(),
-                            Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                return false;
+            public void onClick(View view) {
+                performSearch();
+                Toast.makeText(mcontext,
+                        "Buscar Doc: " +  binding.edtDocAdministrativo.getText().toString().trim(),
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -97,9 +106,9 @@ public class BusquedasDocumentosFragment extends Fragment
         return view;
     }
     private void performSearch() {
-        binding.edtSearch.clearFocus();
+        binding.edtDocAdministrativo.clearFocus();
         InputMethodManager in = (InputMethodManager) mcontext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        in.hideSoftInputFromWindow( binding.edtSearch.getWindowToken(), 0);
+        in.hideSoftInputFromWindow( binding.edtDocAdministrativo.getWindowToken(), 0);
         //...perform search
     }
     @Override

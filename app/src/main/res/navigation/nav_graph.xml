@@ -27,12 +27,12 @@
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.educaciontacna.drednot.MainActivity"
+        android:name="com.educaciontacna.drednot.ui.main.MainActivity"
         android:label="content_main"
         tools:layout="@layout/content_main" />
     <activity
         android:id="@+id/splashActivity"
-        android:name="com.educaciontacna.drednot.SplashActivity"
+        android:name="com.educaciontacna.drednot.ui.main.SplashActivity"
         android:label="activity_splash"
         tools:layout="@layout/activity_splash" />
 

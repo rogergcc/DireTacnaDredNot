@@ -2,7 +2,7 @@
  * Copyright (c) 2021. rogergcc
  */
 
-package com.educaciontacna.drednot;
+package com.educaciontacna.drednot.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,8 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.educaciontacna.drednot.ui.LoginActivity;
+import com.educaciontacna.drednot.R;
+import com.educaciontacna.drednot.ui.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -14,42 +14,42 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.educaciontacna.drednot.data.model.CourseCard;
+import com.educaciontacna.drednot.data.model.DocumentModel;
 import com.educaciontacna.drednot.databinding.FragmentHomeDocumentsBinding;
 import com.educaciontacna.drednot.ui.helpers.FirebaseManager;
 import com.educaciontacna.drednot.ui.listeners.IDocumentListener;
-import com.educaciontacna.drednot.ui.model.CourseCard;
-import com.educaciontacna.drednot.ui.model.DocumentModel;
+import com.educaciontacna.drednot.ui.utils.ListUtils;
 import com.educaciontacna.drednot.ui.utils.MyConstants;
 import com.educaciontacna.drednot.ui.utils.MyUtilsApp;
-import com.educaciontacna.drednot.ui.utils.RandomString;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class HomeDocumentsFragment extends Fragment implements IDocumentListener {
 
+    private static final String TAG = "HomeDocumentsFragment";
     private final FirebaseFirestore firebaseFirestoreDB = new FirebaseManager().db;
     FragmentHomeDocumentsBinding binding;
     private Context mcontext;
-    private ArrayList<DocumentModel> documentModelArrayList;
     private DocumentosHomeAdapter adapter;
-    private static final String TAG = "HomeDocumentsFragment";
+    private DocumentListViewModel documentListViewModel;
+
     public HomeDocumentsFragment() {
         // Required empty public constructor
     }
@@ -62,80 +62,129 @@ public class HomeDocumentsFragment extends Fragment implements IDocumentListener
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initView();
+        observeDocumentViewModel();
+
+        observeLiveData();
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+    }
+
+
+    public void observeLiveData() {
+        documentListViewModel
+                .getLiveDataTotal()
+                .observe(getViewLifecycleOwner(), new Observer<List<DocumentModel>>() {
+                    @Override
+                    public void onChanged(@Nullable List<DocumentModel> documentList) {
+
+                        List<DocumentModel> documentosFiltrado = new ArrayList<>(documentList);
+
+                        ListUtils.removeDocumentos(car -> {
+//                        return car.getEstado() == Color.BLUE;
+                            return car.getEstado().equals(MyConstants.ESTADO_PENDIENTE);
+                        }, documentosFiltrado);
+
+//                        displayTextView.setText(integer.toString());
+                        String tNotificado = "Notificados: " + documentosFiltrado.size();
+                        String tPendiente = "Pendientes: " + (documentList.size() - documentosFiltrado.size());
+                        String tTotal = "Total : " + documentList.size();
+
+                        binding.tvNotificacion.setText(tNotificado);
+                        binding.tvPendidente.setText(tPendiente);
+                        binding.tvTotal.setText(tTotal);
+                    }
+                });
+    }
+
+    private void observeDocumentViewModel() {
+//        documentListViewModel = new ViewModelProvider(getActivity()).get(DocumentListViewModel.class);
+        documentListViewModel = new ViewModelProvider(this).get(DocumentListViewModel.class);
+
+        documentListViewModel.getDocumentsModelData().observe(getViewLifecycleOwner(), new Observer<List<DocumentModel>>() {
+            @Override
+            public void onChanged(List<DocumentModel> documentModelList) {
+                //Load RecyclerView
+                int cantTotal = documentModelList.size();
+                int cantFilPendiente = 0;
+                int cantFilNotificado = 0;
+
+                MyUtilsApp.showLog(TAG, "Size: " + documentModelList.size());
+                //listView.startAnimation(fadeInAnim);
+                //listProgress.startAnimation(fadeOutAnim);
+                List<DocumentModel> documentosToday = new ArrayList<>(documentModelList);
+
+                ListUtils.removeDocumentos(car -> {
+//                        return car.getEstado() == Color.BLUE;
+                    return !car.getFecha().equals(MyUtilsApp.getTodayDateDMY());
+                }, documentosToday);
+
+
+                cantFilNotificado = documentosToday.size();
+                cantFilPendiente = cantTotal - cantFilNotificado;
+
+//                binding.tvNotificacion.setText(cantFilNotificado);
+//                binding.tvPendidente.setText(cantFilPendiente);
+
+                adapter.setDocumentsData(documentosToday);
+
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_home_documents, container, false);
         binding = FragmentHomeDocumentsBinding.inflate(getLayoutInflater());
         mcontext = this.getContext();
-        View view = binding.getRoot();
+//        View view = binding.getRoot();
 
+        //initView();
+
+//        observeDocumentViewModel();
+
+        return binding.getRoot();
+    }
+
+    public void initView() {
 
         binding.rvListDocuments.setLayoutManager(
                 new LinearLayoutManager(mcontext, RecyclerView.VERTICAL, false)
         );
+
         binding.rvListDocuments.setClipToPadding(false);
         binding.rvListDocuments.setHasFixedSize(true);
 
-        documentModelArrayList = new ArrayList<>();
-
-        documentModelArrayList.add(new DocumentModel(1, 0, "Documento 1", "Ann Caceres", "1 Feb 2021"));
-        documentModelArrayList.add(new DocumentModel(2, 1, "Documento 2", "Lugi Br", "14 Mar 2021"));
-        documentModelArrayList.add(new DocumentModel(3, 1, "Documento 3", "Mario Cq", "12 Ene 2021"));
-        documentModelArrayList.add(new DocumentModel(4, 1, "Documento 4wr", "Ing. lucas", "12 Abr 2021"));
-        documentModelArrayList.add(new DocumentModel(5, 0, "Documento 554g", "Ann Adf", "1 May 2021"));
-        documentModelArrayList.add(new DocumentModel(6, 0, "Documento 442ds", "Ann", "1 Jul 2021"));
-
-        adapter = new DocumentosHomeAdapter(mcontext, documentModelArrayList, this);
-
-//        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.card_margin);
-//        binding.rvListDocuments.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
+        adapter = new DocumentosHomeAdapter(mcontext, this);
 
 //        MyUtilsApp.showDialogTitleMessage(mcontext,"Bienvenido a DredNot","Active su ubicacion para continuar");
         binding.rvListDocuments.setAdapter(adapter);
 
-//        generatDummyDocs();
-//        generatDummyDocs();
-        getDocuments();
-        binding.tvFechaHoy.setText(MyUtilsApp.getDateDMY());
-        return view;
+        //getDocuments();
 
+        binding.tvFechaHoy.setText(MyUtilsApp.getTodayDateDMY());
+        binding.tvNotificacion.setText("Notificados: -");
+        binding.tvPendidente.setText("Pendientes: -");
+        binding.tvTotal.setText("Total: -");
     }
 
     @Override
     public void onDashboardCourseClick(CourseCard courseCard, ImageView imageView) {
 
     }
-    public void generatDummyDocs(){
 
-        Map<String, Object> document = new HashMap<>();
-        String codGenerated = RandomString.generate(4);
-        String codGenerated2 = RandomString.generate(3);
-
-        document.put("nombre", "document "+codGenerated);
-        document.put("createdAt", new Timestamp(new Date()));
-        document.put("encargado", "username_"+RandomString.generate(4));
-        document.put("userCode", "USER_"+codGenerated2);
-        document.put("estado", "Pendiente");
-//        document.put("fechaAsignado", "phone");
-
-        firebaseFirestoreDB.collection(MyConstants.DOCUMENTS_COLLECTION_FIRE)
-                .add(document)
-
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        MyUtilsApp.showLogError(TAG,"documento creado");
-                    }
-                })
-
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        MyUtilsApp.showLogError(TAG,"algo ocurrio");
-                    }
-                });
-    }
 
     public void getDocuments() {
 //        db.collection("****")
@@ -146,9 +195,9 @@ public class HomeDocumentsFragment extends Fragment implements IDocumentListener
 
         Date firstDay = new Date();
         Timestamp timestamp1 = Timestamp.now();
-        MyUtilsApp.showLogError("HomeDocumentsFragment", "timestamp1."+timestamp1);
+        MyUtilsApp.showLogError("HomeDocumentsFragment", "timestamp1." + timestamp1);
         firebaseFirestoreDB.collection(MyConstants.DOCUMENTS_COLLECTION_FIRE)
-                .whereEqualTo("fecha",MyUtilsApp.getDateDMY() )
+                .whereEqualTo("fecha", MyUtilsApp.getTodayDateDMY())
 
                 .get()
 
@@ -172,7 +221,7 @@ public class HomeDocumentsFragment extends Fragment implements IDocumentListener
 //
 //                                ));
                                 MyUtilsApp.showLogError("HomeDocumentsFragment", document.get("createdAt").toString());
-                                        MyUtilsApp.showLogError("HomeDocumentsFragment", document.getId() + " => " + document.getData().toString());
+                                MyUtilsApp.showLogError("HomeDocumentsFragment", document.getId() + " => " + document.getData().toString());
                             }
                         } else {
 //                            Log.w(TAG, "Error getting documents.", task.getException());

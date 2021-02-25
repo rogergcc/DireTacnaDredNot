@@ -1,4 +1,4 @@
-package com.educaciontacna.drednot;
+package com.educaciontacna.drednot.ui.main;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.educaciontacna.drednot.R;
 import com.educaciontacna.drednot.databinding.ActivityMainBinding;
 import com.educaciontacna.drednot.ui.utils.MyUtilsApp;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

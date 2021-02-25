@@ -11,6 +11,9 @@ public class MyConstants {
     private MyConstants() {
     }
 
+    public static final String ESTADO_PENDIENTE = "Pendiente";
+    public static final String ESTADO_NOTIFICADO = "Notificado";
+
     public static final int TIPO_ESTADO_PENDIENTE = 0;
     public static final int TIPO_ESTADO_NOTIFICADO = 1;
     public static final int TIPO_ESTADO_3 = 2;
